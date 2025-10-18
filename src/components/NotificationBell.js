@@ -21,7 +21,7 @@ function NotificationBell({ onNotificationClick }) {
         setUnreadCount(data.count);
       }
     } catch (error) {
-      console.error('Error loading unread count:', error);
+      ////console.error('Error loading unread count:', error);
     }
   };
 

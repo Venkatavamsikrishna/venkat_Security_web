@@ -33,7 +33,7 @@ function AdminProfile({ admin, onUpdate }) {
         setNewUsername(data.admin.username);
       }
     } catch (error) {
-      console.error('Error loading profile:', error);
+      ////console.error('Error loading profile:', error);
     } finally {
       setLoading(false);
     }

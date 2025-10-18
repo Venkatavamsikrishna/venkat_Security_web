@@ -32,7 +32,7 @@ function SMTPSettings() {
         setSettings(data.settings);
       }
     } catch (error) {
-      console.error('Error loading SMTP settings:', error);
+      ////console.error('Error loading SMTP settings:', error);
     } finally {
       setLoading(false);
     }

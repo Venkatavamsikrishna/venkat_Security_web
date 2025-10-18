@@ -26,7 +26,7 @@ function Notifications({ onCountChange }) {
         }
       }
     } catch (error) {
-      console.error('Error loading notifications:', error);
+      ////console.error('Error loading notifications:', error);
     } finally {
       setLoading(false);
     }
@@ -37,7 +37,7 @@ function Notifications({ onCountChange }) {
       await markNotificationsRead([notificationId]);
       loadNotifications();
     } catch (error) {
-      console.error('Error marking as read:', error);
+      ////console.error('Error marking as read:', error);
     }
   };
 
@@ -46,7 +46,7 @@ function Notifications({ onCountChange }) {
       await markAllNotificationsRead();
       loadNotifications();
     } catch (error) {
-      console.error('Error marking all as read:', error);
+      ////console.error('Error marking all as read:', error);
     }
   };
 
@@ -59,7 +59,7 @@ function Notifications({ onCountChange }) {
       await deleteNotification(notificationId);
       loadNotifications();
     } catch (error) {
-      console.error('Error deleting notification:', error);
+      ////console.error('Error deleting notification:', error);
     }
   };
 
@@ -72,7 +72,7 @@ function Notifications({ onCountChange }) {
       await clearAllNotifications();
       loadNotifications();
     } catch (error) {
-      console.error('Error clearing notifications:', error);
+      ////console.error('Error clearing notifications:', error);
     }
   };
 

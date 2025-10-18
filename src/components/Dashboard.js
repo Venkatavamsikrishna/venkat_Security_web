@@ -32,7 +32,7 @@ function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
       setStats(statsData.stats);
       setLogs(logsData.logs);
     } catch (error) {
-      console.error('Error loading data:', error);
+      ////console.error('Error loading data:', error);
     } finally {
       setLoading(false);
     }
@@ -156,7 +156,7 @@ function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
 
             {/* Notifications Tab */}
             {activeTab === 'notifications' && (
-              <Notifications onCountChange={(count) => console.log('Unread:', count)} />
+              <Notifications onCountChange={(count) => ////console.log('Unread:', count)} />
             )}
 
             {/* Unlock Password Tab */}

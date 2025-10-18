@@ -38,7 +38,7 @@ function PasswordChange({ onPasswordChanged }) {
         setPasswordHistory(historyData.history);
       }
     } catch (error) {
-      console.error('Error loading password info:', error);
+      ////console.error('Error loading password info:', error);
     }
   };
 
