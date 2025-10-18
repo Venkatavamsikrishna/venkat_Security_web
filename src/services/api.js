@@ -174,4 +174,28 @@ export const disableTOTP = async (unlockPassword) => {
   return response.data;
 };
 
+// Email Logs APIs
+export const getEmailLogs = async (limit = 100, skip = 0, status = '', type = '') => {
+  let url = `/email-logs?limit=${limit}&skip=${skip}`;
+  if (status) url += `&status=${status}`;
+  if (type) url += `&type=${type}`;
+  const response = await api.get(url);
+  return response.data;
+};
+
+export const getEmailStats = async () => {
+  const response = await api.get('/email-logs/stats');
+  return response.data;
+};
+
+export const retryEmail = async (id) => {
+  const response = await api.post(`/email-logs/retry/${id}`);
+  return response.data;
+};
+
+export const clearOldEmailLogs = async (olderThan = 30) => {
+  const response = await api.delete('/email-logs/clear', { data: { olderThan } });
+  return response.data;
+};
+
 export default api;

@@ -9,6 +9,7 @@ import AdminProfile from './AdminProfile';
 import NotificationBell from './NotificationBell';
 import Notifications from './Notifications';
 import TOTPAuthenticator from './TOTPAuthenticator';
+import EmailLogs from './EmailLogs';
 import './Dashboard.css';
 
 function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
@@ -100,6 +101,12 @@ function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
           📧 Email Settings
         </button>
         <button 
+          className={`tab-btn ${activeTab === 'email-logs' ? 'active' : ''}`}
+          onClick={() => setActiveTab('email-logs')}
+        >
+          📨 Email Status
+        </button>
+        <button 
           className={`tab-btn ${activeTab === 'profile' ? 'active' : ''}`}
           onClick={() => setActiveTab('profile')}
         >
@@ -156,7 +163,9 @@ function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
 
             {/* Notifications Tab */}
             {activeTab === 'notifications' && (
-              <Notifications onCountChange={(count) => ////console.log('Unread:', count)} />
+              <Notifications onCountChange={(count) => {
+                // console.log('Unread:', count)
+              }} />
             )}
 
             {/* Unlock Password Tab */}
@@ -172,6 +181,11 @@ function Dashboard({ token, admin, onLogout, onAdminUpdate }) {
             {/* SMTP Settings Tab */}
             {activeTab === 'smtp' && (
               <SMTPSettings />
+            )}
+
+            {/* Email Logs Tab */}
+            {activeTab === 'email-logs' && (
+              <EmailLogs />
             )}
 
             {/* Admin Profile Tab */}
