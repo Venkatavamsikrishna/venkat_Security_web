@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// ✅ PRODUCTION: Use Render backend URL
 const API_URL = 'https://venkat-security.onrender.com/api';
 
 // Create axios instance
@@ -174,4 +175,3 @@ export const disableTOTP = async (unlockPassword) => {
 };
 
 export default api;
-

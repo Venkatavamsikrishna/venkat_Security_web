@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { changeUnlockPassword, verifyOldPassword, getCurrentUnlockPassword, getPasswordHistory } from '../services/api';
+import { changeUnlockPassword, verifyOldPassword, getCurrentUnlockPassword, getPasswordHistory, revealCurrentPassword } from '../services/api';
+import { showSuccess, showError } from '../utils/toast';
 import './PasswordChange.css';
 
 function PasswordChange({ onPasswordChanged }) {
@@ -162,10 +163,10 @@ function PasswordChange({ onPasswordChanged }) {
       if (data.success) {
         setRevealedPassword(data.password);
       } else {
-        alert(data.error || 'Failed to reveal password');
+        showError(data.error || 'Failed to reveal password');
       }
     } catch (error) {
-      alert(error.response?.data?.error || 'Admin password is incorrect');
+      showError(error.response?.data?.error || 'Admin password is incorrect');
     } finally {
       setRevealing(false);
     }
@@ -173,7 +174,7 @@ function PasswordChange({ onPasswordChanged }) {
 
   const copyPassword = () => {
     navigator.clipboard.writeText(revealedPassword);
-    alert('Password copied to clipboard!');
+    showSuccess('Password copied to clipboard!');
   };
 
   return (

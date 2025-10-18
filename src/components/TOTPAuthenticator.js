@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getTOTPStatus, getCurrentTOTP, setupTOTP, disableTOTP } from '../services/api';
+import { showSuccess, showError, showWarning } from '../utils/toast';
 import './TOTPAuthenticator.css';
 
 function TOTPAuthenticator() {
@@ -69,10 +70,10 @@ function TOTPAuthenticator() {
         setShowSetup(true);
         setUnlockPassword('');
       } else {
-        alert(data.error || 'Failed to setup TOTP');
+        showError(data.error || 'Failed to setup TOTP');
       }
     } catch (error) {
-      alert(error.response?.data?.error || 'Unlock password is incorrect');
+      showError(error.response?.data?.error || 'Unlock password is incorrect');
     } finally {
       setVerifying(false);
     }
@@ -99,13 +100,13 @@ function TOTPAuthenticator() {
         setEnabled(false);
         setShowDisableModal(false);
         setUnlockPassword('');
-        alert('TOTP authenticator disabled successfully');
+        showSuccess('TOTP authenticator disabled successfully');
         loadTOTPStatus();
       } else {
-        alert(data.error || 'Failed to disable TOTP');
+        showError(data.error || 'Failed to disable TOTP');
       }
     } catch (error) {
-      alert(error.response?.data?.error || 'Unlock password is incorrect');
+      showError(error.response?.data?.error || 'Unlock password is incorrect');
     } finally {
       setVerifying(false);
     }
@@ -113,7 +114,7 @@ function TOTPAuthenticator() {
 
   const copyCode = () => {
     navigator.clipboard.writeText(currentCode);
-    alert('Code copied to clipboard!');
+    showSuccess('Code copied to clipboard!');
   };
 
   const getProgressPercentage = () => {
@@ -394,7 +395,7 @@ function TOTPAuthenticator() {
                     className="btn-copy-secret" 
                     onClick={() => {
                       navigator.clipboard.writeText(setupData.secret);
-                      alert('Secret copied! Paste it in the VenkatSecurity Mobile App');
+                      showSuccess('Secret copied! Paste it in the VenkatSecurity Mobile App');
                     }}
                   >
                     📋 Copy for Mobile App
